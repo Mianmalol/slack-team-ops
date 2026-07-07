@@ -6,7 +6,7 @@ REPO="$HOME/github/slack-team-ops"
 PY=/opt/anaconda3/bin/python3
 
 cd "$REPO" || exit 1
-git pull --rebase --quiet || echo "WARN: git pull failed; continuing with local state"
+git pull --rebase --autostash --quiet || echo "WARN: git pull failed; continuing with local state"
 
 "$PY" scripts/daily_brief.py
 "$PY" scripts/article_feed.py
