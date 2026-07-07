@@ -6,8 +6,8 @@
     <string>com.marco.slack-daily-brief</string>
     <key>ProgramArguments</key>
     <array>
-        <string>/opt/anaconda3/bin/python3</string>
-        <string>/Users/marcoli/github/slack-team-ops/scripts/daily_brief.py</string>
+        <string>/bin/zsh</string>
+        <string>/Users/marcoli/github/slack-team-ops/scripts/morning.sh</string>
     </array>
     <key>StartCalendarInterval</key>
     <dict>

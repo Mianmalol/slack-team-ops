@@ -1,9 +1,8 @@
 name: article-feed
 
+# Manual fallback only (keyword ranking, no Claude). The scheduled feed runs
+# locally on Marco's Mac via launchd + morning.sh so it can rank with claude -p.
 on:
-  schedule:
-    # 15:17 UTC ≈ 8:17am PT on weekdays (off-minute on purpose).
-    - cron: "17 15 * * 1-5"
   workflow_dispatch: {}
 
 permissions:

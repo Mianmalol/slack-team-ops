@@ -9,6 +9,26 @@ import urllib.request
 
 TOKEN_ENV_FILE = os.path.expanduser("~/.slack/tech-entrepreneurship.env")
 API_BASE = "https://slack.com/api/"
+CLAUDE_BIN = os.path.expanduser("~/.local/bin/claude")
+
+
+def claude_available() -> bool:
+    return os.path.exists(CLAUDE_BIN)
+
+
+def run_claude(prompt: str, timeout: int = 300) -> str:
+    """Run a text-only `claude -p` call (no tools, no secrets in prompt)."""
+    import subprocess
+
+    result = subprocess.run(
+        [CLAUDE_BIN, "-p", prompt],
+        capture_output=True,
+        text=True,
+        timeout=timeout,
+    )
+    if result.returncode != 0:
+        raise RuntimeError(f"claude -p failed: {result.stderr[:500]}")
+    return result.stdout.strip()
 
 
 def load_token() -> str:

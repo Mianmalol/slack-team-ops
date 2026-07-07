@@ -13,15 +13,13 @@ Usage: daily_brief.py [--dry-run]
 import datetime
 import json
 import os
-import subprocess
 import sys
 import time
 
-from slack_common import api, load_token, post
+from slack_common import api, load_token, post, run_claude
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CHANNELS_FILE = os.path.join(REPO_ROOT, "config", "channels.json")
-CLAUDE_BIN = os.path.expanduser("~/.local/bin/claude")
 
 # "general" maps to this workspace's default channel (#master) in channels.json
 SOURCE_CHANNELS = ["research-findings", "code-progress", "new-insights", "general"]
@@ -72,15 +70,7 @@ def fetch_transcript(token: str, ids: dict) -> tuple:
 
 
 def summarize(transcript: str) -> str:
-    result = subprocess.run(
-        [CLAUDE_BIN, "-p", PROMPT + transcript],
-        capture_output=True,
-        text=True,
-        timeout=300,
-    )
-    if result.returncode != 0:
-        raise RuntimeError(f"claude -p failed: {result.stderr[:500]}")
-    return result.stdout.strip()
+    return run_claude(PROMPT + transcript)
 
 
 def main() -> None:

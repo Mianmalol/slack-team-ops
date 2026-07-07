@@ -7,9 +7,15 @@ teammate needs to know is here; everything secret is *not* here.
 
 | Thing | Where it runs | When | Posts to |
 |---|---|---|---|
-| Article feed (`scripts/article_feed.py`) | GitHub Actions (`article-feed.yml`) | Weekdays ~8:17am PT | `#team-feed` |
-| Daily AI brief (`scripts/daily_brief.py`) | Marco's Mac via launchd + `claude -p` | Weekdays 8:50am (delayed to wake-up if the laptop is asleep) | `#team-feed` |
+| Morning pipeline (`scripts/morning.sh`): daily AI brief (`daily_brief.py`) + Claude-ranked article feed (`article_feed.py`) | Marco's Mac via launchd, using `claude -p` | Weekdays 8:50am (delayed to wake-up if the laptop is asleep) | `#team-feed` |
+| Article feed fallback | GitHub Actions (`article-feed.yml`), manual `workflow_dispatch` only | On demand | `#team-feed` |
 | Workspace init (`scripts/init_workspace.py`) | One-time, local | — | creates channels + pins |
+
+The article feed prefilters RSS items by keyword, then `claude -p` ranks the
+candidates against `docs/research-brief.md` and rejects garbage (SEO listicles,
+vendor marketing, crypto-token noise); each pick gets a one-line "why it
+matters" note. If Claude judges nothing worthwhile, nothing is posted. The
+Actions fallback has no Claude and degrades to keyword-count ranking.
 
 The Q&A chatbot idea was considered and deferred: a polling bot answers in
 ~30 min, which barely beats asking an AI directly. If the team wants it later,
