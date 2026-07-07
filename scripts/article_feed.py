@@ -129,7 +129,9 @@ def main() -> None:
             if not e["link"] or not e["title"]:
                 continue
             text = strip_html(f"{e['title']} {e['summary']}").lower()
-            matched = [k for k in keywords if k in text]
+            matched = [
+                k for k in keywords if re.search(r"\b" + re.escape(k) + r"\b", text)
+            ]
             if not matched:
                 continue
             key = canonical(e["link"])

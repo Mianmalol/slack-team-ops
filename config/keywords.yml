@@ -1,22 +1,71 @@
 # Article feed configuration. Edit and push — the next run picks it up.
-# PLACEHOLDER keywords: replace with terms specific to our project once we pick one.
-# Matching is case-insensitive against article title + summary.
+# Tuned for: token efficiency & AI value-attribution startup research
+# (see docs/research-brief.md). Matching is case-insensitive, word-boundary,
+# against article title + summary. Multi-word entries match as exact phrases.
+#
+# Deliberately excluded as too noisy: "token" alone (crypto), "anthropic"/
+# "openai" alone (all AI news), "vantage" alone ("vantage point" prose),
+# "lasso" alone (use "lasso security").
 keywords:
-  - startup
-  - founder
-  - fundraising
-  - seed round
-  - venture capital
-  - product-market fit
-  - go-to-market
-  - early-stage
-  - pitch deck
-  - y combinator
+  # core thesis vocabulary
+  - tokenmaxxing
+  - token efficiency
+  - token usage
+  - token cost
+  - token costs
+  - cost per token
+  - output per token
+  - ai finops
+  - finops
+  - tokenomics workstream
+  - llm cost
+  - llm costs
+  - inference cost
+  - inference costs
+  - ai spend
+  - ai spending
+  - cost attribution
+  - value attribution
+  - usage-based pricing
+  - shadow ai
+  # category movers that could expand into the wedge
+  - llm observability
+  - ai gateway
+  - llm gateway
+  - prompt caching
+  # competitors - direct
+  - revenium
+  - mavvrik
+  # competitors - ai finops
+  - finout
+  - amnic
+  - pointfive
+  - nops
+  # competitors - gateways
+  - portkey
+  - litellm
+  - openrouter
+  - kong ai
+  # competitors - observability
+  - langfuse
+  - helicone
+  - langsmith
+  - braintrust
+  - datadog
+  # competitors - shadow-ai governance
+  - larridin
+  - lasso security
+  - nudge security
+  - cloudeagle
+  - knostic
 
 feeds:
   - https://hnrss.org/frontpage
-  - https://techcrunch.com/feed/
+  - https://hnrss.org/newest?q=finops
+  - https://hnrss.org/newest?q=tokenmaxxing
+  - https://techcrunch.com/category/artificial-intelligence/feed/
   - https://news.crunchbase.com/feed/
+  - https://venturebeat.com/category/ai/feed/
 
 # Post at most this many articles per run.
 max_posts: 3
