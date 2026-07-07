@@ -23,7 +23,8 @@ REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CHANNELS_FILE = os.path.join(REPO_ROOT, "config", "channels.json")
 CLAUDE_BIN = os.path.expanduser("~/.local/bin/claude")
 
-SOURCE_CHANNELS = ["research-findings", "code-progress", "general"]
+# "general" maps to this workspace's default channel (#master) in channels.json
+SOURCE_CHANNELS = ["research-findings", "code-progress", "new-insights", "general"]
 MIN_HUMAN_MESSAGES = 3  # skip the brief entirely on quiet days
 
 PROMPT = """You are writing a short morning brief for a college tech-entrepreneurship team's Slack.
