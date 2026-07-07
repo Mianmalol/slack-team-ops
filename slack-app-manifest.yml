@@ -1,0 +1,22 @@
+display_information:
+  name: Team Ops Bot
+  description: Sets up channels, posts the daily brief and article feed for our tech entrepreneurship team.
+  background_color: "#1a2b4c"
+features:
+  bot_user:
+    display_name: team-ops-bot
+    always_online: true
+oauth_config:
+  scopes:
+    bot:
+      - chat:write
+      - channels:manage
+      - channels:read
+      - channels:history
+      - channels:join
+      - pins:write
+      - users:read
+settings:
+  org_deploy_enabled: false
+  socket_mode_enabled: false
+  token_rotation_enabled: false

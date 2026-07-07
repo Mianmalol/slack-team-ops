@@ -1,0 +1,35 @@
+name: article-feed
+
+on:
+  schedule:
+    # 15:17 UTC ≈ 8:17am PT on weekdays (off-minute on purpose).
+    - cron: "17 15 * * 1-5"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: article-feed
+  cancel-in-progress: false
+
+jobs:
+  push-articles:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run article feed
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+        run: python3 scripts/article_feed.py
+
+      - name: Commit dedupe state
+        run: |
+          git config user.name "team-ops-bot"
+          git config user.email "actions@users.noreply.github.com"
+          if ! git diff --quiet state/posted_links.json; then
+            git add state/posted_links.json
+            git commit -m "chore: update posted-links state"
+            git push
+          fi

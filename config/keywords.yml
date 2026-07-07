@@ -1,0 +1,22 @@
+# Article feed configuration. Edit and push — the next run picks it up.
+# PLACEHOLDER keywords: replace with terms specific to our project once we pick one.
+# Matching is case-insensitive against article title + summary.
+keywords:
+  - startup
+  - founder
+  - fundraising
+  - seed round
+  - venture capital
+  - product-market fit
+  - go-to-market
+  - early-stage
+  - pitch deck
+  - y combinator
+
+feeds:
+  - https://hnrss.org/frontpage
+  - https://techcrunch.com/feed/
+  - https://news.crunchbase.com/feed/
+
+# Post at most this many articles per run.
+max_posts: 3
