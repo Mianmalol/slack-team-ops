@@ -51,6 +51,28 @@ caching).
 3. Can developer-tool token traffic be instrumented without being spyware or requiring an agent install that security teams reject?
 4. Does the adoption-theater incentive (execs wanting usage numbers up) block sales, or does the CFO counterweight win?
 
+## Feasibility net assessment (added July 7, from second research round)
+
+Demand is validated at board level (Atlassian paid $1B for DX because
+enterprises can't quantify AI ROI; ~60% of eng leaders cite lack of metrics as
+their #1 AI adoption blocker). But head-on entry into engineering intelligence
+(Jellyfish, Faros AI, DX/Atlassian, LinearB, Swarmia, Exceeds AI) is
+infeasible for a student team — that segment is closed. Two wedges stay open:
+
+1. **Agent-effectiveness measurement**: cost + outcome per agent task for
+   teams running coding agents; hours-not-months setup; the incumbents were
+   architected for human-assisted coding, so nobody is years ahead yet.
+2. **Support-function AI attribution**: ticket systems already record
+   resolution rate, handle time, escalation, CSAT — AI-vs-baseline ROI is
+   computable without new instrumentation.
+
+Additional watch targets from this round: Jellyfish, Faros AI, Exceeds AI,
+Atlassian/DX moves, Microsoft Viva Insights / Copilot analytics, and any
+"agent effectiveness" or engineering-intelligence-for-agents announcements.
+Key headwinds to keep in view: measurement credibility (GitHub +56% vs METR
+−19%), platform absorption (free vendor dashboards), and adoption-theater
+buyer politics (CFO is the counterweight).
+
 ## Next deliverables
 
 1. Deep-dive competitor map of the narrow wedge (Revenium, Mavvrik, adjacent movers): funding, team size, pricing, exact positioning.
